@@ -1,12 +1,12 @@
 <template>
  <div>
-     sss
+     用户
  </div>
 </template>
 
 <script>
 export default{
-    name: 'Index'
+    name: 'User'
 }
 </script>
 

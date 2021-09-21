@@ -1,12 +1,12 @@
 <template>
  <div>
-     sss
+     权限
  </div>
 </template>
 
 <script>
 export default{
-    name: 'Index'
+    name: 'Role'
 }
 </script>
 

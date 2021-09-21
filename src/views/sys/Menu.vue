@@ -1,12 +1,12 @@
 <template>
  <div>
-     sss
+     菜单
  </div>
 </template>
 
 <script>
 export default{
-    name: 'Index'
+    name: 'Menu'
 }
 </script>
 
