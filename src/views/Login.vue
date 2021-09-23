@@ -1,10 +1,10 @@
 <template>
   <el-row class="row-bg" justify="center">
     <el-col :xl="6" :lg="7">
-      <h2>欢迎来到VueAdmin管理系统</h2>
+      <h2>欢迎来到红宝云权限管理系统</h2>
       <el-image :src="require('/src/assets/MarkerHub.jpg')" style="height:180px;width:180px"></el-image>
-      <p>公众号 MarkerHub</p>
-      <p>扫码二维码，回复【Vueadmin】获取登录密码</p>
+      <p>公众号 hby</p>
+      <p>扫码二维码，回复【红宝云仓库】获取登录密码</p>
     </el-col>
 
     <el-col :span="1">

@@ -8,6 +8,8 @@ import 'element-plus/dist/index.css'
 
 import Axios from '../src/plugnis/axios'
 
+
+
 require('./mock.js')
 
 createApp(App).use(store).use(router).use(ElementPlus).use(Axios).mount('#app')

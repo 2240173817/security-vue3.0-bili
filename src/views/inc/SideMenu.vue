@@ -5,61 +5,55 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
+  <router-link to="/">
     <el-menu-item index="0">
       <template #title>
         <i class="el-icon-s-home"></i>
         <span>首页</span>
       </template>
     </el-menu-item>
-    <el-sub-menu index="1">
-      <template #title>
-        <i class="el-icon-s-operation"></i>
-        <span>系统管理</span>
-      </template>
-      <el-menu-item-group>
-        <router-link to="/sys/user">
-          <el-menu-item index="1-1">
-            <template #title>
-              <i class="el-icon-menu"></i>
-              <span>用户管理</span>
-            </template>
-          </el-menu-item>
-        </router-link>
-        <router-link to="/sys/role">
-        <el-menu-item index="1-2">
-          <template #title>
-            <i class="el-icon-rank"></i>
-            <span>角色管理</span>
-          </template>
-        </el-menu-item>
-        </router-link>
-        <router-link to="/sys/menus">
-        <el-menu-item index="1-3">
-          <template #title>
-            <i class="el-icon-menu"></i>
-            <span>菜单管理</span>
-          </template>
-        </el-menu-item>
-        </router-link>
-      </el-menu-item-group>
-    </el-sub-menu>
+  </router-link>  
 
-    <el-sub-menu index="2">
+    <el-sub-menu :index="menu.name" v-for="menu in menuList" :key="menu.name">
       <template #title>
-        <i class="el-icon-s-tools"></i>
-        <span>系统工具</span>
+        <i :class="menu.icon"></i>
+        <span>{{ menu.title }}</span>
       </template>
-      <el-menu-item-group>
-        <el-menu-item index="2-2">
+
+      <router-link
+        :to="item.path"
+        v-for="item in menu.children"
+        :key="item.name"
+      >
+        <el-menu-item :index="item.name">
           <template #title>
-            <i class="el-icon-s-order"></i>
-            <span>数字字典</span>
+            <i :class="item.icon"></i>
+            <span>{{ item.title }}</span>
           </template>
         </el-menu-item>
-      </el-menu-item-group>
+      </router-link>
     </el-sub-menu>
   </el-menu>
 </template>
+
+<script lang="js">
+
+ export default {
+   name: 'SideMenu',
+    data() {
+      return {
+
+      }
+    },
+    computed:{
+      menuList:{
+        get(){
+          return this.$store.state.menus.menuList
+        }
+      }
+    }
+ }
+</script>
 
 <style lang="less">
 </style>
