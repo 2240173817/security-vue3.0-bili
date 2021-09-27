@@ -75,10 +75,13 @@ import qs from 'qs'
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            axios.post('/login?' + qs.stringify(this.loginForm)).then((res) => {
+            
+            this.$http.post('/login?' + qs.stringify(this.loginForm)).then((res) => {
+              console.log(res)
               const jwt = res.headers['authorization']
               // 将jwt存储到应用store中                     
-              this.$store.commit("SET_TOKEN", jwt)                     
+              this.$store.commit("SET_TOKEN", jwt)   
+                                
               this.$router.push("/index")
             }).catch(() => {                     
               this.getCaptcha();                     
@@ -95,10 +98,11 @@ import qs from 'qs'
         this.$refs[formName].resetFields()
       },
       getCaptcha(){
-        axios.get('/captcha').then(res => {
+        axios.get('/api/captcha').then(res => {
           console.log('captcha==>',res)
           this.loginForm.token = res.data.data.token
-          this.captchaImg = res.data.data.captchaImg
+          this.captchaImg = res.data.data.base64Img
+          this.loginForm.code = ''
         })
       }
     },
